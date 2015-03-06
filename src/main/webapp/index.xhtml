@@ -12,15 +12,19 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
         <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
+        <script type="text/javascript">
+            $(document).ready(function(){
+                
+            });            
+        </script>
     </h:head>
     <h:body>
 
         <h:panelGroup layout="block" styleClass="container">
 
             <h:panelGroup layout="block" styleClass="col-lg-12  well" id="fomulaire">
-                
-        <!--formulaire de connexion DEBUT-->
+
+                <!--formulaire de connexion DEBUT-->
                 <h:form styleClass="col-lg-4 col-lg-push-1" id="connexion">
 
                     <legend>Connexion</legend>
@@ -37,7 +41,7 @@
 
                     <h:panelGroup layout="block" styleClass="form-group">
                         <h:inputSecret id="password" value="#{utilisateurSession.mdp}" p:placeholder="Mot de passe" 
-                                     requiredMessage="Veuillez remplir correctement ce champs" styleClass="form-control"/>
+                                       requiredMessage="Veuillez remplir correctement ce champs" styleClass="form-control"/>
                         <h:message for="pseudo" styleClass="message_erreur" />
                     </h:panelGroup>
 
@@ -51,9 +55,9 @@
                     </p>
 
                 </h:form>
-        <!--formulaire de connexion FIN-->
-        
-        <!--formulaire d'inscription-->
+                <!--formulaire de connexion FIN-->
+
+                <!--formulaire d'inscription-->
                 <h:form styleClass="col-lg-4 col-lg-push-3" id="inscription">
 
                     <legend>Inscription</legend>
@@ -118,5 +122,16 @@
 
         </h:panelGroup>
 
+        <input type="submit" id="test" value="test"/>
+
+        <div id="mondiv">
+            egrehtrhtrhrthyj
+        </div>
+
+        <script>
+                    $("#test").click(function{
+            alert("hhhhh");
+            });
+        </script>
     </h:body>
 </html>

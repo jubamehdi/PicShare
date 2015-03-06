@@ -11,6 +11,10 @@ body{
 	margin-top: 10px;
 }
 
+#mondiv{
+    visibility: hidden;
+}
+
 .head{
 	background-color: fuchsia;
 }
