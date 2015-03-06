@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <!--jj jj -->
+        <h:outputStylesheet library="css" name="indexStyle.css"/>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    </h:head>
+    <h:body>
+
+        <h:panelGroup layout="block" styleClass="container">
+
+            <h:panelGroup layout="block" styleClass="col-lg-12  well" id="fomulaire">
+                
+        <!--formulaire de connexion DEBUT-->
+                <h:form styleClass="col-lg-4 col-lg-push-1" id="connexion">
+
+                    <legend>Connexion</legend>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <h:inputText id="pseudoC" value="#{utilisateurSession.pseudo}" p:placeholder="Pseudo" required="true"
+                                     requiredMessage="Veuillez remplir correctement ce champs" 
+                                     validatorMessage="Entrez correctement votre mail" styleClass="form-control">
+
+                            <f:validateRegex pattern="^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}" />
+                        </h:inputText>
+                        <h:message for="pseudoC" styleClass="message_erreur" />
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <h:inputSecret id="password" value="#{utilisateurSession.mdp}" p:placeholder="Mot de passe" 
+                                     requiredMessage="Veuillez remplir correctement ce champs" styleClass="form-control"/>
+                        <h:message for="pseudo" styleClass="message_erreur" />
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <h:commandButton id="submit" value="Connexion" styleClass="btn btn-primary" action="#{utilisateurSession.connexion()}"/>
+                    </h:panelGroup>
+
+                    <p class="help-block"><strong>Condition générale d'utilisation : </strong><br/>
+                        Une fois inscrit, tous les utilisateur de ce site peuvent accéder à l'ensemble des album que 
+                        vous partager en public.
+                    </p>
+
+                </h:form>
+        <!--formulaire de connexion FIN-->
+        
+        <!--formulaire d'inscription-->
+                <h:form styleClass="col-lg-4 col-lg-push-3" id="inscription">
+
+                    <legend>Inscription</legend>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <h:inputText id="pseudoI" value="" required="true" p:placeholder="Entrez votre mail" 
+                                     requiredMessage="Veuillez remplir correctement ce champs" 
+                                     validatorMessage="Entrez correctement votre mail" styleClass="form-control">
+
+                            <f:validateRegex pattern="^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}" />
+                        </h:inputText>
+                        <h:message for="pseudoI" styleClass="message_erreur" />
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <h:inputText id="nom" value="" p:placeholder="Votre nom" 
+                                     validatorMessage="Votre nom doit avoir au moins deux caractères"
+                                     styleClass="form-control">
+
+                            <f:validateRegex pattern="[a-zA-Z]{2,20}" />
+
+                        </h:inputText>
+                        <h:message for="nom" styleClass="message_erreur"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <h:inputText id="prenom" value="" p:placeholder="Votre prenom" 
+                                     validatorMessage="Votre prenom doit avoir au moins deux caractères" 
+                                     styleClass="form-control">
+
+                            <f:validateRegex pattern="[a-zA-Z]{2,20}" />
+
+                        </h:inputText>
+                        <h:message for="prenom" styleClass="message_erreur"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <h:inputText id="mot_de_passe" value="" p:placeholder="Mot de passe" 
+                                     styleClass="form-control">
+                            <f:validator validatorId="ConfirmeMdpValidator"/>
+                            <f:attribute name="confirmMdp" value="#{confirmMdp}"/>
+
+                        </h:inputText>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <h:inputText id="confirmMdp" value="" p:placeholder="Confirmez votre mot de passe"
+                                     styleClass="form-control"/>
+                        <h:message for="mot_de_passe" styleClass="message_erreur"/>
+                    </h:panelGroup>
+
+                    <p class="help-block">* tout les champs sont obligatoires </p>
+
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <h:commandButton id="submit" value="Inscription" styleClass="btn btn-primary" 
+                                         action="inscription.xhtml"/>
+                    </h:panelGroup>
+
+                </h:form>
+
+            </h:panelGroup>
+
+        </h:panelGroup>
+
+    </h:body>
+</html>
