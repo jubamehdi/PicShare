@@ -46,13 +46,13 @@ public class UtilisateurSession implements Serializable{
         this.estConnecte = estConnecte;
     }
     
-    public String connexion(){
-        if(this.pseudo.equals("youba@gmail.com") && this.mdp.equals("mdp")){
-            estConnecte = true;
-            return "compteUtilisateur.xhtml"; 
-        }
-        return "index.xhtml";
-    }
+//    public String connexion(){
+//        if(this.pseudo.equals("youba@gmail.com") && this.mdp.equals("mdp")){
+//            estConnecte = true;
+//            return "compteUtilisateur.xhtml"; 
+//        }
+//        return "index.xhtml";
+//    }
     
     /**
      * Creates a new instance of UtilisateurSession
