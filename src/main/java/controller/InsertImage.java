@@ -53,7 +53,7 @@ public class InsertImage {
         
 
         //création d'un dossier
-          File folder = new File("C:\\Users\\admin\\Desktop\\Login Example\\Login Example\\web\\resources\\images");
+          File folder = new File("C:\\Users\\juba\\Documents\\NetBeansProjects\\picShare\\src\\main\\webapp\\resources\\images");
           String filename = FilenameUtils.getBaseName(file.getFileName()); 
           String extension = FilenameUtils.getExtension(file.getFileName());
           File destFile = File.createTempFile(filename + "-", "." + extension);
@@ -61,7 +61,7 @@ public class InsertImage {
           FileUtils.copyFileToDirectory(destFile, folder);
          
           // ici, nous allons récupérer les métadonnées.
-          File folder2 = new File("C:\\Users\\admin\\Desktop\\Login Example\\Login Example\\web\\resources\\metadata");
+          File folder2 = new File("C:\\Users\\juba\\Documents\\NetBeansProjects\\picShare\\src\\main\\webapp\\resources\\metadata");
           BodyContentHandler handler = new BodyContentHandler();
           Metadata metadata = new Metadata();
           
@@ -69,7 +69,7 @@ public class InsertImage {
           ParseContext pcontext = new ParseContext();
           //Jpeg Parse 
           JpegParser  JpegParser = new JpegParser();
-          
+     
           JpegParser.parse(inputstream, handler, metadata,pcontext);
           
           System.out.println("***************************************************************************");
@@ -84,28 +84,12 @@ public class InsertImage {
             }
           FileUtils.copyFileToDirectory(metadataFile, folder2);
           
-          Metadonnee m= new Metadonnee(filename, "MaDescription", Integer.parseInt(metadata.get(Metadata.ALTITUDE)), Integer.parseInt(metadata.get(Metadata.LONGITUDE)),metadata.get(Metadata.DATE) , metadata.get(Metadata.TOTAL_TIME), 10,destFile.getName());
-            DataQuery query=new DataQuery();
+          //Metadonnee m= new Metadonnee(filename, "MaDescription", Integer.parseInt(metadata.get(Metadata.ALTITUDE)), Integer.parseInt(metadata.get(Metadata.LONGITUDE)),metadata.get(Metadata.DATE) , metadata.get(Metadata.TOTAL_TIME), 10,destFile.getName());
+          Metadonnee m= new Metadonnee(filename, extension, Integer.MIN_VALUE, Integer.MIN_VALUE, extension, extension,(Integer) 14, destFile.getName());
+          DataQuery query=new DataQuery();
             query.metadataControl(m);
           
-          
-           
-//        Images imgs = new Images();
-//        imgs.setIdImage((Integer)22);
-//
-//        
-//        ByteArrayOutputStream out = new ByteArrayOutputStream();
-//        
-//        byte[] buffer = new byte[16]; 
-//        try {
-//            while (file.getInputstream().read(buffer) != -1) out.write(buffer);
-//        } catch (IOException ex) {
-//            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        imgs.setContenu(out.toByteArray());
-//        imgs.setContenu(null);
-//        img.create(imgs);
-//        img.create(imgs);
+
         return "hello all";
     }
 }

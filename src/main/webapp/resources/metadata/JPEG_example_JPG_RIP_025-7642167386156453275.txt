@@ -1,0 +1,14 @@
+Resolution Units: inch
+Compression Type: Baseline
+Data Precision: 8 bits
+Number of Components: 3
+tiff:ImageLength: 234
+Component 2: Cb component: Quantization table 1, Sampling factors 1 horiz/1 vert
+Component 1: Y component: Quantization table 0, Sampling factors 2 horiz/2 vert
+Image Height: 234 pixels
+X Resolution: 72 dots
+Image Width: 313 pixels
+Component 3: Cr component: Quantization table 1, Sampling factors 1 horiz/1 vert
+tiff:BitsPerSample: 8
+tiff:ImageWidth: 313
+Y Resolution: 72 dots

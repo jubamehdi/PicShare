@@ -32,7 +32,10 @@ public class LoginController implements Serializable  {
         if (query.loginControl(username, password)) {
             //creéation de la session
             ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).setAttribute("username", username);
-            return "compteUtilisateur.xhtml?faces-redirect=true";
+            SelectImagesController s= new SelectImagesController();
+            s.setUsername(username);
+            s.SelectImagesController();
+            return "recupimages.xhtml?faces-redirect=true";
         }
         RequestContext.getCurrentInstance().update("grow1");
         FacesContext context = FacesContext.getCurrentInstance();

@@ -6,7 +6,11 @@ package query;
 
 import entity.Login;
 import entity.Metadonnee;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -46,9 +50,10 @@ public class DataQuery {
             Login nouveau = new Login(username, password, nom, prenom);
             em.persist(nouveau);
             em.flush();
+            em.getTransaction().commit();
             return true;
         } catch (Exception e) {
-            System.err.println("createControle : creation user  block catch");
+           
             return false;
         }
     }
@@ -56,7 +61,15 @@ public class DataQuery {
     public boolean metadataControl(Metadonnee metadonnee) {
         em.persist(metadonnee);
         em.flush();
-        //em.getTransaction().commit();
+        em.getTransaction().commit();
         return true;
+    }
+    
+     public List<Metadonnee> selectImagesControl(String username){
+        List<Metadonnee> liste = new ArrayList<Metadonnee>();
+        Login l = em.createNamedQuery("Login.findByUsername", Login.class).setParameter("username", username).getSingleResult();
+        Integer idUser=l.getId();
+        liste = em.createNamedQuery("Metadonnee.findByIdUser", Metadonnee.class).setParameter("idUser", idUser).getResultList();
+        return liste;
     }
 }

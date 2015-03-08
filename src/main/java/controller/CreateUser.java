@@ -10,6 +10,7 @@ import query.DataQuery;
 import java.time.Clock;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
@@ -19,8 +20,8 @@ import org.primefaces.context.RequestContext;
  * @author admin
  */
 @ManagedBean(name = "create")
-@SessionScoped
-public class CreateUser implements Serializable{
+@RequestScoped
+public class CreateUser implements Serializable {
 
     private String username;
     private String password;
@@ -36,18 +37,16 @@ public class CreateUser implements Serializable{
      *
      * @return
      */
-
     public String loginCreate() {
-//        if(query.createControl(username, password)){
-//       return "?faces-redirect=true";
-//       }
+
         if (query.createControl(username, password, nom, prenom)) {
-            System.out.println("requete OK!");
+
             return "compteUtilisateur.xhtml?faces-redirect=true";
         }
-         System.out.println("tozzzz!");
+
 //        FacesContext context = FacesContext.getCurrentInstance();
-//        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Username already exists!!!"));
+//        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "pseudoI", "Username already exists!!!"));
+        FacesContext.getCurrentInstance().addMessage("pseudoC", new FacesMessage("un compte existe"));
         return "";
     }
 
