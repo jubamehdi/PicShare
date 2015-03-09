@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
     <h:head>
         <title>Facelet Title</title>
         <!--jj jj -->
@@ -15,7 +15,7 @@
 
     </h:head>
     <h:body>
-
+        
         <h:panelGroup layout="block" styleClass="container">
 
             <h:panelGroup layout="block" styleClass="col-lg-12  well" id="fomulaire">
@@ -61,11 +61,11 @@
                     <h:panelGroup layout="block" styleClass="form-group">
                         <h:inputText id="pseudoI" value="#{create.username}" required="true" p:placeholder="Entrez votre mail" 
                                      requiredMessage="Veuillez remplir correctement ce champs" 
-                                     validatorMessage="Entrez correctement votre mail" styleClass="form-control">
+                                      styleClass="form-control">
 
-                            <f:validateRegex pattern="^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}" />
+                            <f:ajax event="blur" execute="pseudoI" render="outP"></f:ajax>
                         </h:inputText>
-                        <h:message for="pseudoI" styleClass="message_erreur" />
+                        <h:message id="outP" for="pseudoI" styleClass="message_erreur" />
                     </h:panelGroup>
 
                     <h:panelGroup layout="block" styleClass="form-group">
@@ -93,17 +93,17 @@
                     <h:panelGroup layout="block" styleClass="form-group">
                         <h:inputText id="mot_de_passe" value="#{create.password}" p:placeholder="Mot de passe" 
                                      styleClass="form-control">
-<!--                            <f:validator validatorId="ConfirmeMdpValidator"/>
-                            <f:attribute name="confirmMdp" value="#{confirmMdp}"/>-->
+                            <f:validator validatorId="ConfirmeMdpValidator"/>
+                            <f:attribute name="confirmMdp" value="#{confirmMdp}"/>
 
                         </h:inputText>
                     </h:panelGroup>
-
-<!--                    <h:panelGroup layout="block" styleClass="form-group">
-                        <h:inputText id="confirmMdp" value="" p:placeholder="Confirmez votre mot de passe"
+                 
+                    <h:panelGroup layout="block" styleClass="form-group">
+                        <h:inputText id="confirmMdp"  p:placeholder="Confirmez votre mot de passe"
                                      styleClass="form-control"/>
                         <h:message for="mot_de_passe" styleClass="message_erreur"/>
-                    </h:panelGroup>-->
+                    </h:panelGroup>
 
                     <p class="help-block">* tout les champs sont obligatoires </p>
 

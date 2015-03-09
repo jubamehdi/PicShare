@@ -8,13 +8,13 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <ui:composition template="template/main.xhtml">
+        <ui:composition template="../template/main.xhtml">
             <ui:define name="content">
 
                 <div class="row block">
                     <div class="row">
                         <div class="col-sm-8">
-                            <h:graphicImage library="images" name="t1.jpg"/>
+                            <h:graphicImage library="images" name="#{selectImages.selectImagesByIDController(request.getParameter('idImage')).lien}"/>
                         </div>
                         <div class="meta_donnee col-sm-4">
                             <legend>Métadonnées</legend>
@@ -26,7 +26,7 @@
                             <h:form>
                                 <legend>description</legend>
                                 <div class="form-group">
-                                    <h:inputTextarea value="" styleClass="form-control" rows="3" id="comment"/>
+                                    <h:inputTextarea value="#{selectImages.selectImagesByIDController(request.getParameter('idImage')).designation}" styleClass="form-control" rows="3" id="comment"/>
                                 </div>
                                 <h:commandButton value="Valider" styleClass="btn btn-primary bouton"/>
 

@@ -13,6 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.validation.constraints.Pattern;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -22,7 +23,8 @@ import org.primefaces.context.RequestContext;
 @ManagedBean(name = "create")
 @RequestScoped
 public class CreateUser implements Serializable {
-
+    
+    @Pattern(regexp = "^[a-z0-9._-]+@[a-z0-9._-]{2,}\\.[a-z]{2,4}" , message="This string contain only spaces")
     private String username;
     private String password;
     private String nom;

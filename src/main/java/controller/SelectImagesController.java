@@ -14,23 +14,46 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "selectImages")
 @SessionScoped
-public class SelectImagesController implements Serializable{
-    private String username;
+public class SelectImagesController implements Serializable {
+
+   // private String username;
+ 
     private List<Metadonnee> listMeta;
-    private DataQuery query= new DataQuery();
+    private int size;
+    private DataQuery query = new DataQuery();
 
-    public void SelectImagesController() {
-    List<Metadonnee> liste = new ArrayList<Metadonnee>();
-    listMeta=query.selectImagesControl(username);
+    public SelectImagesController() {
+    }
+    
+    public List<Metadonnee> getSelectImagesController(String username) {      
+        listMeta = query.selectImagesControl(username);
+        return listMeta;
+    }
+    
+    public List<Metadonnee> getSelectAllImagesController() {
+        listMeta = query.selectAll();
+        return listMeta;
+    }
+    
+    public List<Metadonnee> getSelectAllPartageImagesController() {
+        listMeta = query.selectAllPartage();
+        return listMeta;
     }
 
-    public String getUsername() {
-        return username;
+    public Metadonnee selectImagesByIDController(String idS) {
+        
+        Integer id=Integer.parseInt(idS);
+        System.err.println("id ___________________ : "+idS);
+        Metadonnee meta = query.selectImageById(id);
+        return meta;
     }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+//    public String getUsername() {
+//        return username;
+//    }
+//
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
 
     public List<Metadonnee> getListMeta() {
         return listMeta;
@@ -39,5 +62,14 @@ public class SelectImagesController implements Serializable{
     public void setListMeta(List<Metadonnee> listMeta) {
         this.listMeta = listMeta;
     }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     
 }

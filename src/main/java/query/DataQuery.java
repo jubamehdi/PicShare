@@ -42,6 +42,30 @@ public class DataQuery {
         }
         return false;
     }
+    
+    public List<Metadonnee> selectAll() {
+        List<Metadonnee> liste= new ArrayList<>();
+        try {
+            liste = em.createNamedQuery("Metadonnee.findAll", Metadonnee.class).getResultList();
+            
+        } catch (Exception e) {
+        }
+        return liste;
+    }
+    public Metadonnee selectImageById(Integer id){
+        Metadonnee meta = em.createNamedQuery("Metadonnee.findByIdMetadata", Metadonnee.class).setParameter("idMetadata", id).getSingleResult();
+        return meta;
+    }
+    
+    public List<Metadonnee> selectAllPartage() {
+        List<Metadonnee> liste= new ArrayList<>();
+        try {
+            liste = em.createNamedQuery("Metadonnee.findByPartage", Metadonnee.class).setParameter("partage", true).getResultList();
+            
+        } catch (Exception e) {
+        }
+        return liste;
+    }
 
     public boolean createControl(String username, String password, String nom, String prenom) {
 
@@ -66,10 +90,15 @@ public class DataQuery {
     }
     
      public List<Metadonnee> selectImagesControl(String username){
+         
         List<Metadonnee> liste = new ArrayList<Metadonnee>();
         Login l = em.createNamedQuery("Login.findByUsername", Login.class).setParameter("username", username).getSingleResult();
         Integer idUser=l.getId();
         liste = em.createNamedQuery("Metadonnee.findByIdUser", Metadonnee.class).setParameter("idUser", idUser).getResultList();
+        for(Metadonnee m:liste){
+            System.err.println("messssaaggggggeeee : "+ m.getLien());
+        }
         return liste;
     }
+     
 }

@@ -12,17 +12,17 @@
     
     <h:body>
         <!--hhhhhhh-->
-        <ui:composition template="template/main.xhtml">
+        <ui:composition template="../template/main.xhtml">
             <ui:define name="content">
                 <h:link outcome="modifImage">Albums</h:link>
                 <h:panelGroup layout="block" class="block row">
-                    <c:forEach var="i" begin="1" end="7" step="1">
+                    <c:forEach items="#{selectImages.getSelectImagesController(request.getSession(true).getAttribute('username'))}" var="i" >
                         <div class="col-xs-5 col-sm-4 col-md-3">
                             <h:form>
                                 <h:link outcome="modifImage">
                                     <!--inserer l'id de l'image-->
                                     <f:param name="idImage" value="idimage" />
-                                    <h:graphicImage library="images" name="t1.jpg"/>
+                                    <h:graphicImage library="images" name="#{i.lien}" alt="#{i.lien}"/>
                                 </h:link>
                                 <h:commandLink styleClass="btn btn-danger" >
                                     <h:panelGroup layout="span" styleClass="glyphicon glyphicon-ok"/>

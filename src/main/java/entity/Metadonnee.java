@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author admin
+ * @author juba
  */
 @Entity
 @Table(name = "metadata")
@@ -34,7 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Metadonnee.findByImageWidth", query = "SELECT m FROM Metadonnee m WHERE m.imageWidth = :imageWidth"),
     @NamedQuery(name = "Metadonnee.findByDateCreation", query = "SELECT m FROM Metadonnee m WHERE m.dateCreation = :dateCreation"),
     @NamedQuery(name = "Metadonnee.findByTimeCreation", query = "SELECT m FROM Metadonnee m WHERE m.timeCreation = :timeCreation"),
-    @NamedQuery(name = "Metadonnee.findByIdUser", query = "SELECT m FROM Metadonnee m WHERE m.idUser = :idUser")})
+    @NamedQuery(name = "Metadonnee.findByIdUser", query = "SELECT m FROM Metadonnee m WHERE m.idUser = :idUser"),
+    @NamedQuery(name = "Metadonnee.findByLien", query = "SELECT m FROM Metadonnee m WHERE m.lien = :lien"),
+    @NamedQuery(name = "Metadonnee.findByPartage", query = "SELECT m FROM Metadonnee m WHERE m.partage = :partage")})
 public class Metadonnee implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,13 +62,16 @@ public class Metadonnee implements Serializable {
     private String timeCreation;
     @Column(name = "ID_USER")
     private Integer idUser;
+    @Size(max = 100)
     @Column(name = "LIEN")
     private String lien;
-    
+    @Column(name = "partage")
+    private Boolean partage;
+
     public Metadonnee() {
     }
 
-    public Metadonnee(String titreImage, String designation, Integer imageHeight, Integer imageWidth, String dateCreation, String timeCreation, Integer idUser, String lien) {
+    public Metadonnee(String titreImage, String designation, Integer imageHeight, Integer imageWidth, String dateCreation, String timeCreation, Integer idUser, String lien, Boolean partage) {
         this.titreImage = titreImage;
         this.designation = designation;
         this.imageHeight = imageHeight;
@@ -75,10 +80,11 @@ public class Metadonnee implements Serializable {
         this.timeCreation = timeCreation;
         this.idUser = idUser;
         this.lien = lien;
+        this.partage = partage;
     }
+    
+    
 
-    
-    
     public Metadonnee(Integer idMetadata) {
         this.idMetadata = idMetadata;
     }
@@ -155,7 +161,14 @@ public class Metadonnee implements Serializable {
         this.lien = lien;
     }
 
-    
+    public Boolean getPartage() {
+        return partage;
+    }
+
+    public void setPartage(Boolean partage) {
+        this.partage = partage;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -178,7 +191,7 @@ public class Metadonnee implements Serializable {
 
     @Override
     public String toString() {
-        return "com.entity.Metadonnee[ idMetadata=" + idMetadata + " ]";
+        return "entity.Metadonnee[ idMetadata=" + idMetadata + " ]";
     }
     
 }

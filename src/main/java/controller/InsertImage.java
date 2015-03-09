@@ -56,7 +56,8 @@ public class InsertImage {
           File folder = new File("C:\\Users\\juba\\Documents\\NetBeansProjects\\picShare\\src\\main\\webapp\\resources\\images");
           String filename = FilenameUtils.getBaseName(file.getFileName()); 
           String extension = FilenameUtils.getExtension(file.getFileName());
-          File destFile = File.createTempFile(filename + "-", "." + extension);
+          
+          File destFile = File.createTempFile(filename, "." + extension);
           FileUtils.copyInputStreamToFile(file.getInputstream(), destFile);
           FileUtils.copyFileToDirectory(destFile, folder);
          
@@ -85,7 +86,9 @@ public class InsertImage {
           FileUtils.copyFileToDirectory(metadataFile, folder2);
           
           //Metadonnee m= new Metadonnee(filename, "MaDescription", Integer.parseInt(metadata.get(Metadata.ALTITUDE)), Integer.parseInt(metadata.get(Metadata.LONGITUDE)),metadata.get(Metadata.DATE) , metadata.get(Metadata.TOTAL_TIME), 10,destFile.getName());
-          Metadonnee m= new Metadonnee(filename, extension, Integer.MIN_VALUE, Integer.MIN_VALUE, extension, extension,(Integer) 14, destFile.getName());
+                                                 //designation    
+            Metadonnee m= new Metadonnee(filename, extension, Integer.MIN_VALUE, Integer.MIN_VALUE, extension, extension,(Integer) 21, destFile.getName(),Boolean.TRUE);
+          
           DataQuery query=new DataQuery();
             query.metadataControl(m);
           
