@@ -51,9 +51,11 @@ public class Metadonnee implements Serializable {
     @Column(name = "DESIGNATION")
     private String designation;
     @Column(name = "IMAGE_HEIGHT")
-    private Integer imageHeight;
+    @Size(max = 50)
+    private String imageHeight;
     @Column(name = "IMAGE_WIDTH")
-    private Integer imageWidth;
+    @Size(max = 50)
+    private String imageWidth;
     @Size(max = 50)
     @Column(name = "DATE_CREATION")
     private String dateCreation;
@@ -72,7 +74,7 @@ public class Metadonnee implements Serializable {
     public Metadonnee() {
     }
 
-    public Metadonnee(String titreImage, String designation, Integer imageHeight, Integer imageWidth, String dateCreation, String timeCreation, String userName, String lien, Boolean partage) {
+    public Metadonnee(String titreImage, String designation, String imageHeight, String imageWidth, String dateCreation, String timeCreation, String userName, String lien, Boolean partage) {
         this.titreImage = titreImage;
         this.designation = designation;
         this.imageHeight = imageHeight;
@@ -115,19 +117,19 @@ public class Metadonnee implements Serializable {
         this.designation = designation;
     }
 
-    public Integer getImageHeight() {
+    public String getImageHeight() {
         return imageHeight;
     }
 
-    public void setImageHeight(Integer imageHeight) {
+    public void setImageHeight(String imageHeight) {
         this.imageHeight = imageHeight;
     }
 
-    public Integer getImageWidth() {
+    public String getImageWidth() {
         return imageWidth;
     }
 
-    public void setImageWidth(Integer imageWidth) {
+    public void setImageWidth(String imageWidth) {
         this.imageWidth = imageWidth;
     }
 

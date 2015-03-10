@@ -14,6 +14,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.validation.constraints.Pattern;
+import mail.SimpleMail;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -39,15 +40,14 @@ public class CreateUser implements Serializable {
      *
      * @return
      */
-    public String loginCreate() {
+    public String loginCreate() throws Exception {
 
         if (query.createControl(username, password, nom, prenom)) {
-
+            SimpleMail m = new SimpleMail();
+            m.sendMail(username);
             return "compteUtilisateur.xhtml?faces-redirect=true";
         }
 
-//        FacesContext context = FacesContext.getCurrentInstance();
-//        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "pseudoI", "Username already exists!!!"));
         FacesContext.getCurrentInstance().addMessage("pseudoC", new FacesMessage("un compte existe"));
         return "";
     }

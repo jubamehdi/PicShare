@@ -4,18 +4,18 @@
  */
 package controller;
 
-import entity.Metadonnee;
+
 import query.DataQuery;
 
-import org.primefaces.context.RequestContext;
+
 
 import java.io.Serializable;
-import javax.faces.FacesException;
-import javax.faces.application.FacesMessage;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
 
 
 /**
@@ -30,11 +30,11 @@ public class LoginController implements Serializable   {
     private String password;
     private DataQuery query = new DataQuery();
 
-    public String loginControl() {
+    public String loginControl()  {
         if (query.loginControl(username, password)) {
             //creéation de la session
             ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).setAttribute("username", username);
-            System.err.println("login oki");
+           
             return "/utilisateur/compteUtilisateur.xhtml?faces-redirect=true";
         }
         System.err.println("login non oki");
@@ -58,5 +58,10 @@ public class LoginController implements Serializable   {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "index.xhtml?faces-redirect=true";
     }
 }

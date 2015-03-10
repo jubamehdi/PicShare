@@ -30,8 +30,10 @@
                                     <h:inputTextarea value="#{manipImage.description}" styleClass="form-control" rows="3" id="comment"/>
                                 </div>
                                 <h1>id image :#{request.getParameter('idImage')}</h1>
-                                
-                                <h:commandButton id="submit" value="valider" styleClass="btn btn-primary" action="#{manipImage.modifieDescriptionImage(request.getParameter('idImage').toString())}"/>
+                                <!--<p>{manipImage.modifieDescriptionImage(request.getParameter('idImage'))}</p>-->
+                                <h:commandButton id="submit" value="valider" styleClass="btn btn-primary" action="#{manipImage.modifieDescriptionImage()}">
+                                    <f:param name="idImage" value="#{request.getParameter('idImage')}" />
+                                </h:commandButton>
                                 
                                 
                                

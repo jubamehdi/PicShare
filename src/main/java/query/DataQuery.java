@@ -6,6 +6,7 @@ package query;
 
 import entity.Login;
 import entity.Metadonnee;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import javax.persistence.Persistence;
  *
  * @author User
  */
-public class DataQuery {
+public class DataQuery implements Serializable{
 
     EntityManagerFactory enf;
     EntityManager em;
@@ -52,8 +53,8 @@ public class DataQuery {
     }
 
     public Metadonnee selectImageById(Integer id) {
-        Metadonnee meta = em.createNamedQuery("Metadonnee.findByIdMetadata", Metadonnee.class).setParameter("idMetadata", id).getSingleResult();
-        return meta;
+       // Metadonnee meta = em.createNamedQuery("Metadonnee.findByIdMetadata", Metadonnee.class).setParameter("idMetadata", id).getSingleResult();
+        return em.createNamedQuery("Metadonnee.findByIdMetadata", Metadonnee.class).setParameter("idMetadata", id).getSingleResult();
     }
 
     public List<Metadonnee> selectAllPartage() {
@@ -99,11 +100,15 @@ public class DataQuery {
     public void deleteImageById(Integer Id) {
         Metadonnee meta = em.createNamedQuery("Metadonnee.findByIdMetadata", Metadonnee.class).setParameter("idMetadata",Id).getSingleResult();
         em.remove(meta);
+        em.flush();
+        em.getTransaction().commit();
     }
 
 
     public void changeDescription(Metadonnee meta) {
         em.merge(meta);
+        em.flush();
+        em.getTransaction().commit();
     }
 
 }

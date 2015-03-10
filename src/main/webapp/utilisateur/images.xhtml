@@ -9,6 +9,7 @@
 
     <h:head>
         <title>Facelet Title</title>
+
     </h:head>
 
     <h:body>
@@ -24,7 +25,7 @@
                             <p:fileUpload value="#{insert.file}" mode="simple"/>
                             <h:inputTextarea value="#{insert.description}" styleClass="form-control" rows="3" id="comment"/>
                             <h:commandButton value="submit"  styleClass="btn btn-primary" actionListener="#{insert.message()}"/>
-                            
+
                         </h:form>   
                     </div>
                 </div>
@@ -39,8 +40,10 @@
                                     <f:param name="idImage" value="#{i.idMetadata}" />
                                     <h:graphicImage library="images" name="#{i.lien}" alt="#{i.lien}"/>
                                 </h:link>
-                                <h:commandLink styleClass="btn btn-danger" >
-                                    <h:panelGroup layout="span" styleClass="glyphicon glyphicon-ok"/>
+                                <h:commandLink styleClass="btn btn-danger" action="#{manipImage.deleteImage()}">
+                                    <h:panelGroup layout="span" styleClass="glyphicon glyphicon-remove" />
+                                    <f:param name="idImage" value="#{i.idMetadata}" />
+
                                 </h:commandLink>
                             </h:form>
                         </div>
@@ -48,6 +51,7 @@
                 </h:panelGroup>
             </ui:define>
         </ui:composition>
+
     </h:body>
 </html>
 

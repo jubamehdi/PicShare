@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -41,7 +42,6 @@ public class SelectImagesController implements Serializable {
     }
 
     public Metadonnee selectImagesByIDController(String idS) {
-        
         Integer id=Integer.parseInt(idS);
         System.err.println("id ___________________ : "+idS);
         Metadonnee meta = query.selectImageById(id);

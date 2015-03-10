@@ -91,12 +91,12 @@
                     </h:panelGroup>
 
                     <h:panelGroup layout="block" styleClass="form-group">
-                        <h:inputText id="mot_de_passe" value="#{create.password}" p:placeholder="Mot de passe" 
+                        <h:inputSecret id="mot_de_passe" value="#{create.password}" p:placeholder="Mot de passe" 
                                      styleClass="form-control">
                             <f:validator validatorId="ConfirmeMdpValidator"/>
                             <f:attribute name="confirmMdp" value="#{confirmMdp}"/>
 
-                        </h:inputText>
+                        </h:inputSecret>
                     </h:panelGroup>
                  
                     <h:panelGroup layout="block" styleClass="form-group">

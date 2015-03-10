@@ -63,7 +63,7 @@ public class InsertImage {
     public String message() throws IOException, IOException, SAXException, TikaException {
 
         //création d'un dossier
-        File folder = new File("C:\\Users\\juba\\Documents\\NetBeansProjects\\picShare\\src\\main\\webapp\\resources\\images");
+        File folder = new File("C:\\Users\\juba\\Documents\\NetBeansProjects\\Pic_Share\\src\\main\\webapp\\resources\\images");
         String filename = FilenameUtils.getBaseName(file.getFileName());
         String extension = FilenameUtils.getExtension(file.getFileName());
 
@@ -72,7 +72,7 @@ public class InsertImage {
         FileUtils.copyFileToDirectory(destFile, folder);
 
         // ici, nous allons récupérer les métadonnées.
-        File folder2 = new File("C:\\Users\\juba\\Documents\\NetBeansProjects\\picShare\\src\\main\\webapp\\resources\\metadata");
+        File folder2 = new File("C:\\Users\\juba\\Documents\\NetBeansProjects\\Pic_Share\\src\\main\\webapp\\resources\\metadata");
         BodyContentHandler handler = new BodyContentHandler();
         Metadata metadata = new Metadata();
 
@@ -102,8 +102,8 @@ public class InsertImage {
         Date date2 = new Date();
         String hDate = heure.format(date2);
         //(Integer.parseInt(metadata.get(Metadata.ALTITUDE)))   Integer.parseInt(metadata.get(Metadata.ALTITUDE))     
-        Metadonnee m = new Metadonnee(filename, description, (Integer)21,
-                (Integer) 23, sDate, hDate, (String) ((HttpSession) (FacesContext.getCurrentInstance().getExternalContext().getSession(false))).getAttribute("username"), 
+        Metadonnee m = new Metadonnee(filename, description,metadata.get("Image Width"),
+               metadata.get("Image Height"), sDate, hDate, (String) ((HttpSession) (FacesContext.getCurrentInstance().getExternalContext().getSession(false))).getAttribute("username"), 
             destFile.getName(), Boolean.TRUE);
 
         DataQuery query = new DataQuery();

@@ -17,16 +17,14 @@
             <div class="navbar navbar-inverse navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">PicShare</a>
+                        <a class="navbar-brand" href="compteUtilisateur.xhtml">PicShare</a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Accueil</a></li>
-                        <li><a href="#">Mes albums</a></li>
-                        <li><a href="#">Profil</a></li>
+                        <li><a href="images.xhtml">Mes images</a></li>
                     </ul>
-
-
-                    <a href="#" class="btn btn-primary navbar-right" id="deconnec"> <span class="glyphicon glyphicon-off"></span> Déconnexion</a>
+                    <h:form>
+                    <h:commandLink class="btn btn-primary navbar-right" id="deconnec" action="#{login.logout()}"><span class="glyphicon glyphicon-off"></span> Déconnexion</h:commandLink>
+                    </h:form>
                 </div>
             </div>
 
