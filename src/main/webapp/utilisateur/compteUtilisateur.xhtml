@@ -32,7 +32,9 @@
                             <div class="meta_donnee col-sm-4">
                                 <legend>Métadonnées</legend>
                                 <p>Titre : #{i.titreImage}</p><br/>
-                                 
+                                <p>Titre : #{i.imageWidth}</p><br/>
+                                <p>Titre : #{i.imageHeight}</p><br/>
+                                
                             </div>
                         </div>
 
@@ -43,8 +45,12 @@
                             </div>
                             <div class="info col-sm-4">
                                 <legend>info</legend>
-                                publié par : <br/>
-                                #{i.idUser}
+                                publié par : 
+                                #{i.userName}<br/>
+                                le : 
+                                #{i.dateCreation}<br/>
+                                à : 
+                                #{i.timeCreation}<br/>
                             </div>
                         </div>
                     </div>

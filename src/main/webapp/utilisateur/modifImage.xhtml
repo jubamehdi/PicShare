@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -23,14 +24,18 @@
 
                     <div class="row">
                         <div class="description col-sm-8">
-                            <h:form>
+                            <h:form >
                                 <legend>description</legend>
                                 <div class="form-group">
-                                    <h:inputTextarea value="#{selectImages.selectImagesByIDController(request.getParameter('idImage')).designation}" styleClass="form-control" rows="3" id="comment"/>
+                                    <h:inputTextarea value="#{manipImage.description}" styleClass="form-control" rows="3" id="comment"/>
                                 </div>
-                                <h:commandButton value="Valider" styleClass="btn btn-primary bouton"/>
-
-                                <h:commandButton value="Annuler" styleClass="btn btn-primary"/>
+                                <h1>id image :#{request.getParameter('idImage')}</h1>
+                                
+                                <h:commandButton id="submit" value="valider" styleClass="btn btn-primary" action="#{manipImage.modifieDescriptionImage(request.getParameter('idImage').toString())}"/>
+                                
+                                
+                               
+                                
                             </h:form>
                         </div>
 

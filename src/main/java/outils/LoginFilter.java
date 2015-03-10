@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author juba
  */
-@WebFilter(filterName = "LoginFilter", urlPatterns = {"/utilisateur/*","/picShare/*"})
+@WebFilter(filterName = "LoginFilter", urlPatterns = {"/utilisateur/*"})
 public class LoginFilter implements Filter {
     
     private static final boolean debug = true;
@@ -113,7 +113,7 @@ public class LoginFilter implements Filter {
         }else
         {
             System.err.println("user !!!!!= null dofilter !!!!");
-            chain.doFilter(request, response);
+           chain.doFilter(request, response);
         }
     }
 

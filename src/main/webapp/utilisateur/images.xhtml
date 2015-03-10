@@ -4,24 +4,39 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    
+
     <h:body>
-        <!--hhhhhhh-->
+
         <ui:composition template="../template/main.xhtml">
             <ui:define name="content">
-                <h:link outcome="modifImage">Albums</h:link>
+
+                <div id="overlay3">
+                    <div class="popup_block">
+                        <a class="close" href="#">close</a>
+                        <h:form enctype="multipart/form-data">
+                            <p:messages showDetail="true"/>
+                            <p:fileUpload value="#{insert.file}" mode="simple"/>
+                            <h:inputTextarea value="#{insert.description}" styleClass="form-control" rows="3" id="comment"/>
+                            <h:commandButton value="submit"  styleClass="btn btn-primary" actionListener="#{insert.message()}"/>
+                            
+                        </h:form>   
+                    </div>
+                </div>
+                <p><a href="#overlay3">Ajouter une image</a></p>
+
                 <h:panelGroup layout="block" class="block row">
+
                     <c:forEach items="#{selectImages.getSelectImagesController(request.getSession(true).getAttribute('username'))}" var="i" >
                         <div class="col-xs-5 col-sm-4 col-md-3">
                             <h:form>
                                 <h:link outcome="modifImage">
-                                    <!--inserer l'id de l'image-->
-                                    <f:param name="idImage" value="idimage" />
+                                    <f:param name="idImage" value="#{i.idMetadata}" />
                                     <h:graphicImage library="images" name="#{i.lien}" alt="#{i.lien}"/>
                                 </h:link>
                                 <h:commandLink styleClass="btn btn-danger" >
