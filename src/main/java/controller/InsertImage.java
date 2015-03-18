@@ -104,7 +104,7 @@ public class InsertImage {
         //(Integer.parseInt(metadata.get(Metadata.ALTITUDE)))   Integer.parseInt(metadata.get(Metadata.ALTITUDE))     
         Metadonnee m = new Metadonnee(filename, description,metadata.get("Image Width"),
                metadata.get("Image Height"), sDate, hDate, (String) ((HttpSession) (FacesContext.getCurrentInstance().getExternalContext().getSession(false))).getAttribute("username"), 
-            destFile.getName(), Boolean.TRUE);
+            destFile.getName(), Boolean.FALSE);
 
         DataQuery query = new DataQuery();
         query.metadataControl(m);

@@ -93,16 +93,8 @@
                     <h:panelGroup layout="block" styleClass="form-group">
                         <h:inputSecret id="mot_de_passe" value="#{create.password}" p:placeholder="Mot de passe" 
                                      styleClass="form-control">
-                            <f:validator validatorId="ConfirmeMdpValidator"/>
-                            <f:attribute name="confirmMdp" value="#{confirmMdp}"/>
 
                         </h:inputSecret>
-                    </h:panelGroup>
-                 
-                    <h:panelGroup layout="block" styleClass="form-group">
-                        <h:inputText id="confirmMdp"  p:placeholder="Confirmez votre mot de passe"
-                                     styleClass="form-control"/>
-                        <h:message for="mot_de_passe" styleClass="message_erreur"/>
                     </h:panelGroup>
 
                     <p class="help-block">* tout les champs sont obligatoires </p>

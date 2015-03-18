@@ -52,4 +52,12 @@ public class gestionImageController implements Serializable {
         query.deleteImageById(id);
     }
 
+    public String partagerImage() {
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        Integer id = Integer.parseInt(params.get("idImage"));
+        Metadonnee m = query.selectImageById(id);
+        m.setPartage(!m.getPartage());
+        query.partager(m);
+        return "images.xhtml?faces-redirect=true";
+    }
 }

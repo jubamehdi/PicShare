@@ -9,9 +9,12 @@ import entity.Metadonnee;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import javax.faces.context.FacesContext;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 /**
@@ -98,17 +101,29 @@ public class DataQuery implements Serializable{
     }
 
     public void deleteImageById(Integer Id) {
+        EntityTransaction etx = em.getTransaction();
+        if (!etx.isActive())etx.begin();
         Metadonnee meta = em.createNamedQuery("Metadonnee.findByIdMetadata", Metadonnee.class).setParameter("idMetadata",Id).getSingleResult();
         em.remove(meta);
         em.flush();
-        em.getTransaction().commit();
+        etx.commit();
     }
 
 
     public void changeDescription(Metadonnee meta) {
+        EntityTransaction etx = em.getTransaction();
+        if (!etx.isActive())etx.begin();
         em.merge(meta);
         em.flush();
-        em.getTransaction().commit();
+        etx.commit();
+    }
+    
+    public void partager(Metadonnee meta){
+        EntityTransaction etx = em.getTransaction();
+        if (!etx.isActive())etx.begin();
+        em.merge(meta);
+        em.flush();
+        etx.commit();
     }
 
 }

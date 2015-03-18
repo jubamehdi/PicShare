@@ -45,7 +45,7 @@ public class SimpleMail {
         message.setSender(addressFrom);
 
         message.setSubject("Bienvenue sur picshare");
-        message.setContent("Bienvenue; vous êtes parfaitement inscrit sur notre site de partage d'images /n ", "text/plain");
+        message.setContent("Bienvenue; vous êtes parfaitement inscrit sur notre site de partage d'images ", "text/plain");
         String sendTo[] = {username};
         if (sendTo != null) {
             InternetAddress[] addressTo = new InternetAddress[sendTo.length];

@@ -14,6 +14,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityTransaction;
 import javax.servlet.http.HttpSession;
 
 
@@ -37,7 +38,6 @@ public class LoginController implements Serializable   {
            
             return "/utilisateur/compteUtilisateur.xhtml?faces-redirect=true";
         }
-        System.err.println("login non oki");
         return "";
 
     }
@@ -60,8 +60,9 @@ public class LoginController implements Serializable   {
         this.password = password;
     }
     
+    
     public String logout() {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "index.xhtml?faces-redirect=true";
+        ((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false)).invalidate();
+        return "/index.xhtml?faces-redirect=true";
     }
 }

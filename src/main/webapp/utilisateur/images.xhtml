@@ -43,8 +43,13 @@
                                 <h:commandLink styleClass="btn btn-danger" action="#{manipImage.deleteImage()}">
                                     <h:panelGroup layout="span" styleClass="glyphicon glyphicon-remove" />
                                     <f:param name="idImage" value="#{i.idMetadata}" />
-
                                 </h:commandLink>
+                                
+                                <h:commandLink styleClass="btn btn-success" action="#{manipImage.partagerImage()}">
+                                    <h:panelGroup layout="span" styleClass="glyphicon glyphicon-ok" />
+                                    <f:param name="idImage" value="#{i.idMetadata}" />
+                                </h:commandLink>
+                                
                             </h:form>
                         </div>
                     </c:forEach>
